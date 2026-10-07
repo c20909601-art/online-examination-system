@@ -1,0 +1,38 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Create Exam - ExamPortal{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card p-4">
+            <div class="card-body">
+                <h3 class="fw-bold text-dark mb-3">Create New Exam</h3>
+                <form method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold text-secondary">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.errors %}
+                                <div class="text-danger small mt-1">{{ field.errors|strip_tags }}</div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{% url 'exam_list' %}" class="btn btn-outline-secondary btn-custom">Cancel</a>
+                        <button type="submit" class="btn btn-primary btn-custom px-4">Save Exam</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Style form controls automatically with Bootstrap classes
+    document.querySelectorAll('input, textarea, select').forEach(element => {
+        element.classList.add('form-control');
+    });
+</script>
+{% endblock %}

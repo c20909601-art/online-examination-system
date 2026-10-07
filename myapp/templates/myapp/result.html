@@ -1,0 +1,52 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Results - {{ result.exam.title }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card text-center p-4">
+            <div class="card-body">
+                {% if result.score >= result.exam.pass_marks %}
+                    <div class="text-success mb-3">
+                        <i class="bi bi-check-circle-fill display-1"></i>
+                    </div>
+                    <h2 class="fw-bold text-success mb-1">Congratulations!</h2>
+                    <p class="text-muted">You have successfully passed the exam.</p>
+                {% else %}
+                    <div class="text-danger mb-3">
+                        <i class="bi bi-x-circle-fill display-1"></i>
+                    </div>
+                    <h2 class="fw-bold text-danger mb-1">Exam Failed</h2>
+                    <p class="text-muted">Better luck next time!</p>
+                {% endif %}
+
+                <div class="bg-light rounded p-4 my-4">
+                    <div class="row g-3">
+                        <div class="col-6 text-start">
+                            <span class="text-muted d-block small">Exam Title</span>
+                            <strong class="text-dark">{{ result.exam.title }}</strong>
+                        </div>
+                        <div class="col-6 text-end">
+                            <span class="text-muted d-block small">Candidate</span>
+                            <strong class="text-dark">{{ result.user.username }}</strong>
+                        </div>
+                        <div class="col-6 text-start">
+                            <span class="text-muted d-block small">Your Score</span>
+                            <span class="fs-4 fw-bold text-primary">{{ result.score }}</span>
+                        </div>
+                        <div class="col-6 text-end">
+                            <span class="text-muted d-block small">Passing Marks</span>
+                            <span class="fs-4 fw-bold text-secondary">{{ result.exam.pass_marks }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="{% url 'exam_list' %}" class="btn btn-primary btn-lg w-100 btn-custom">
+                    <i class="bi bi-arrow-left me-2"></i> Back to All Exams
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
