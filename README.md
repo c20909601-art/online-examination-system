@@ -18,7 +18,7 @@ A modern, responsive web application built with **Django** and **Bootstrap 5** f
 ## 🛠️ Tech Stack
 
 - **Backend**: Python, Django
-- **Frontend**: HTML5, CSS3, Bootstrap 5, Bootstrap Icons
+- **Frontend**: HTML5, CSS
 - **Database**: SQLite3 (default Django DB)
 - **Version Control**: Git & GitHub
 
